@@ -205,6 +205,7 @@ clearBtn.addEventListener("click", () => {
   responseCode.textContent = "Response will appear here...";
   statusBar.hidden = true;
   streamState.hidden = true;
+  streamState.classList.remove("done");
 });
 
 copyBtn.addEventListener("click", async () => {
@@ -334,6 +335,7 @@ async function sendRequest() {
       responseCode.className = "placeholder";
       responseCode.textContent = "Waiting for data...";
       streamState.hidden = false;
+      streamState.classList.remove("done");
       streamState.textContent = "streaming";
       setStatus(res.status, res.ok, elapsed, null);
 
@@ -355,7 +357,8 @@ async function sendRequest() {
       }
       if (active) completed.push(active);
 
-      streamState.hidden = true;
+      streamState.classList.add("done");
+      streamState.textContent = "streaming finished";
       activeTab = "pretty";
       tabBtns.forEach((b) => b.classList.toggle("active", b.dataset.tab === "pretty"));
       renderPretty(combineStreamShapes(completed));

@@ -7,56 +7,58 @@
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app">
-    <header class="app-header">
-      <h1>cURL Viewer</h1>
-      <p class="subtitle">Paste a curl command, run it, and inspect the response.</p>
-    </header>
+  <header class="topnav">
+    <span class="topnav-title">cURL Viewer</span>
+    <a class="github-link" href="https://github.com/arunabharjun/cURL-Viewer-with-Steaming" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+      <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+      </svg>
+    </a>
+  </header>
 
-    <div class="layout-grid">
-      <!-- Left column: request -->
-      <section class="panel left-panel">
-        <h2 class="panel-title">Request</h2>
-        <textarea id="curlInput" placeholder="curl -X GET https://api.example.com/data -H 'Authorization: Bearer TOKEN'"></textarea>
+  <div class="layout-grid">
+    <!-- Left column: request -->
+    <section class="col left-col">
+      <h2 class="col-title">Request</h2>
+      <textarea id="curlInput" placeholder="curl -X GET https://api.example.com/data -H 'Authorization: Bearer TOKEN'"></textarea>
 
-        <div class="controls">
-          <div class="toggle-wrap">
-            <span class="toggle-label">Normal</span>
-            <label class="switch">
-              <input type="checkbox" id="streamToggle" />
-              <span class="slider"></span>
-            </label>
-            <span class="toggle-label">Streaming</span>
-          </div>
-
-          <div class="action-buttons">
-            <button id="clearBtn" class="btn btn-secondary">Clear</button>
-            <button id="sendBtn" class="btn btn-primary">Send Request</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Right column: response -->
-      <section class="panel right-panel">
-        <div class="response-header">
-          <h2 class="panel-title">Response</h2>
-          <div class="response-tabs">
-            <button class="tab-btn active" data-tab="pretty">Pretty</button>
-            <button class="tab-btn" data-tab="raw">Raw</button>
-          </div>
+      <div class="controls">
+        <div class="toggle-wrap">
+          <span class="toggle-label">Normal</span>
+          <label class="switch">
+            <input type="checkbox" id="streamToggle" checked />
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label">Streaming</span>
         </div>
 
-        <div class="status-bar" id="statusBar" hidden>
-          <span id="statusCode" class="status-pill"></span>
-          <span id="statusTime" class="status-detail"></span>
-          <span id="statusSize" class="status-detail"></span>
-          <span id="streamState" class="status-detail stream-state" hidden></span>
-          <button id="copyBtn" class="btn btn-tiny">Copy JSON</button>
+        <div class="action-buttons">
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+          <button id="sendBtn" class="btn btn-primary">Send Request</button>
         </div>
+      </div>
+    </section>
 
-        <pre id="responseOutput" class="response-output"><code id="responseCode" class="placeholder">Response will appear here...</code></pre>
-      </section>
-    </div>
+    <!-- Right column: response -->
+    <section class="col right-col">
+      <div class="col-header">
+        <h2 class="col-title">Response</h2>
+        <div class="response-tabs">
+          <button class="tab-btn active" data-tab="pretty">Pretty</button>
+          <button class="tab-btn" data-tab="raw">Raw</button>
+        </div>
+      </div>
+
+      <div class="status-bar" id="statusBar" hidden>
+        <span id="statusCode" class="status-pill"></span>
+        <span id="statusTime" class="status-detail"></span>
+        <span id="statusSize" class="status-detail"></span>
+        <span id="streamState" class="status-detail stream-state" hidden></span>
+        <button id="copyBtn" class="btn btn-tiny">Copy JSON</button>
+      </div>
+
+      <pre id="responseOutput" class="response-output"><code id="responseCode" class="placeholder">Response will appear here...</code></pre>
+    </section>
   </div>
 
   <script src="app.js"></script>
