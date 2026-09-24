@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "curl-viewer",
+      "url": "http://localhost:8934",
+      "port": 8934
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>cURL Viewer</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>cURL Viewer</h1>
+      <p class="subtitle">Paste a curl command, run it, and inspect the response.</p>
+    </header>
+
+    <div class="layout-grid">
+      <!-- Left column: request -->
+      <section class="panel left-panel">
+        <h2 class="panel-title">Request</h2>
+        <textarea id="curlInput" placeholder="curl -X GET https://api.example.com/data -H 'Authorization: Bearer TOKEN'"></textarea>
+
+        <div class="controls">
+          <div class="toggle-wrap">
+            <span class="toggle-label">Normal</span>
+            <label class="switch">
+              <input type="checkbox" id="streamToggle" />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Streaming</span>
+          </div>
+
+          <div class="action-buttons">
+            <button id="clearBtn" class="btn btn-secondary">Clear</button>
+            <button id="sendBtn" class="btn btn-primary">Send Request</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right column: response -->
+      <section class="panel right-panel">
+        <div class="response-header">
+          <h2 class="panel-title">Response</h2>
+          <div class="response-tabs">
+            <button class="tab-btn active" data-tab="pretty">Pretty</button>
+            <button class="tab-btn" data-tab="raw">Raw</button>
+          </div>
+        </div>
+
+        <div class="status-bar" id="statusBar" hidden>
+          <span id="statusCode" class="status-pill"></span>
+          <span id="statusTime" class="status-detail"></span>
+          <span id="statusSize" class="status-detail"></span>
+          <span id="streamState" class="status-detail stream-state" hidden></span>
+          <button id="copyBtn" class="btn btn-tiny">Copy JSON</button>
+        </div>
+
+        <pre id="responseOutput" class="response-output"><code id="responseCode" class="placeholder">Response will appear here...</code></pre>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
